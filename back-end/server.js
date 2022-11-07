@@ -29,5 +29,5 @@ app.use('/', userRoutes(db));
 
 
 app.listen(PORT, () => {
-  console.log(`Express is be listening on port ${PORT}!`);
+  console.log(`Express is listening on port ${PORT}!`);
 });
