@@ -1,13 +1,15 @@
 // load .env data into process.env
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
 const db = require('./db/connection');
-const express = require('express');
-const morgan = require('morgan');
-const app = express();
-const bodyParser = require('body-parser');
-const cookieSession = require('cookie-session');
-const methodOverride = require('method-override');
+import express, { Express} from 'express';
+import morgan from 'morgan';
+import bodyParser from 'body-parser';
+import cookieSession from 'cookie-session';
+import methodOverride from 'method-override';
+
+const app: Express = express();
 const PORT = 8080;
 
 // Express Configuration
