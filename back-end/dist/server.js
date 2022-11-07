@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // load .env data into process.env
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-const db = require('../db/connection');
+const db = require('./db/connection');
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const body_parser_1 = __importDefault(require("body-parser"));
@@ -26,7 +26,7 @@ app.use((0, cookie_session_1.default)({
 app.use((0, method_override_1.default)('_method'));
 app.use(express_1.default.static('public'));
 // Routes
-const userRoutes = require('../routes/users');
+const userRoutes = require('./routes/users');
 app.use('/', userRoutes(db));
 app.listen(PORT, () => {
     console.log(`Express is listening on port ${PORT}!`);
