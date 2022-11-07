@@ -1,0 +1,23 @@
+{
+  "name": "express-back-end",
+  "version": "1.0.0",
+  "description": "Express backend in an Express-React project",
+  "main": "server.js",
+  "scripts": {
+    "go": "nodemon server.js",
+    "db:reset": "node bin/resetDb.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "chalk": "^5.1.2",
+    "cookie-session": "^2.0.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
+    "method-override": "^3.0.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^1.18.7",
+    "pg": "^8.8.0"
+  }
+}
