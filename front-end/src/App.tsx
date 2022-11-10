@@ -1,11 +1,19 @@
 import React from 'react';
 
-function App() {
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+
+import LandingPage from './components/LandingPage';
+import Dashboard from './components/Dashboard';
+
+const App = () => {
   return (
-    <div className="App">
-      <p>Hello from App!</p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<LandingPage />} />
+        <Route path='/dashboard/:user_id' element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
+ 
 export default App;
