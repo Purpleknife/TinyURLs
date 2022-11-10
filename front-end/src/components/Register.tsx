@@ -37,11 +37,11 @@ const Register = (props: RegisterProps) => {
   }
 
   const registerUser = async() => {
-    const password = passwordInput.current.value;
-    const saltedPassword = bcrypt.hashSync(password, salt);
+    const password: string = passwordInput.current.value;
+    const saltedPassword: string = bcrypt.hashSync(password, salt);
 
-    const passwordConfirmation = passwordConfirmationInput.current.value;
-    const saltedPasswordConfirmation = bcrypt.hashSync(passwordConfirmation, salt);
+    const passwordConfirmation: string = passwordConfirmationInput.current.value;
+    const saltedPasswordConfirmation: string = bcrypt.hashSync(passwordConfirmation, salt);
 
     axios.get('/users')
       .then(res => {    
@@ -62,8 +62,8 @@ const Register = (props: RegisterProps) => {
               setCookie('user_id', res.data.id, {path: '/'});
               setCookie('logged_in', 'yes', {path: '/'});
               setShowError('');
-              const user_id = res.data.id;
-              //navigate(`/dashboard/${user_id}`);
+              const user_id: (string | number) = res.data.id;
+              navigate(`/dashboard/${user_id}`);
             })
             .catch((error) => {
               console.log(error.message);
