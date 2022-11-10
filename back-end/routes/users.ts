@@ -80,6 +80,12 @@ module.exports = (db: any) => {
     });
 
 
+    // Route for logout:
+    router.get('/logout', (req: Request, res: Response) => {
+      return res.json('You\'re logged out!');
+    });
+
+
   return router;
 };
 

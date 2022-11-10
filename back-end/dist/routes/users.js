@@ -66,6 +66,10 @@ module.exports = (db) => {
             console.log(error.message);
         });
     });
+    // Route for logout:
+    router.get('/logout', (req, res) => {
+        return res.json('You\'re logged out!');
+    });
     return router;
 };
 //module.exports = router;
