@@ -45,6 +45,23 @@ module.exports = (db: any) => {
   });
 
 
+  // Route to login users:
+  router.get('/login/:id', (req: Request, res: Response) => {
+    const id: string | number = req.params.id;
+
+    const queryParams: (string | number)[] = [id];
+    const queryString: string = `SELECT * FROM users WHERE users.id = $1;`;
+
+    db.query(queryString, queryParams)      
+    .then((data: any) => {
+      res.json(data.rows[0]);
+    })
+    .catch((error: Error) => {
+      console.log(error.message);
+    });
+  });
+
+
     // Route to get the user's Dashboard:
     router.get('/dashboard/:user_id', (req: Request, res: Response) => {
       const user_id: string | number = req.params.user_id;
