@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button';
 import Login from './Login';
 import Register from './Register';
 
+import './LandingPage.scss';
+
 const LandingPage = () => {
 
   const [showRegister, setShowRegister] = useState(false);
