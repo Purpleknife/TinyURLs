@@ -11,7 +11,7 @@ This project's goal is to revisit an old project made with Node JS, Express and 
 - Learn how to manage state with TypeScript.
 
 ## Features
-- [ ] A user can generate a short URL by submitting a long URL.
-- [ ] They can login or register to save their generated tiny URLs. (=> <i>in progress</i>)
+- [ ] A user can generate a short URL by submitting a long URL. (=> <i>in progress</i>)
+- [X] They can login or register to save their generated tiny URLs.
 - [ ] They can delete or edit the URLs.
 - [ ] They can see how many times their tiny URL was clicked.
