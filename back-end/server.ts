@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const db = require('./db/connection');
-import express, { Express} from 'express';
+import express, { Express } from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import cookieSession from 'cookie-session';
