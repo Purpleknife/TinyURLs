@@ -20,16 +20,15 @@ const LandingPage = () => {
 
   return (
     <div className="LandingPage">
-      Hello
       <Button className='login' onClick={handleLoginShow}>
-            Login
-          </Button>
-          <Login handleClose={handleLoginClose} show={showLogin}/>
-          
-          <Button className='login' onClick={handleRegisterShow}>
-            Register
-          </Button>
-          <Register handleClose={handleRegisterClose} show={showRegister}/>
+        Login
+      </Button>
+      <Login handleClose={handleLoginClose} show={showLogin}/>
+      
+      <Button className='login' onClick={handleRegisterShow}>
+        Register
+      </Button>
+      <Register handleClose={handleRegisterClose} show={showRegister}/>
     </div>
   );
 }
