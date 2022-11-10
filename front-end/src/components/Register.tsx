@@ -11,7 +11,6 @@ import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 
-
 interface RegisterProps {
   handleClose: () => void;
   show: boolean
@@ -43,6 +42,10 @@ const Register = (props: RegisterProps) => {
     const passwordConfirmation: string = passwordConfirmationInput.current.value;
     const saltedPasswordConfirmation: string = bcrypt.hashSync(passwordConfirmation, salt);
 
+    if (password !== passwordConfirmation) {
+      setShowError('Passwords don\'t match.');
+    }
+    
     axios.get('/users')
       .then(res => {    
         const allUsers = res.data;
