@@ -12,7 +12,7 @@ module.exports = (db: any) => {
 
     db.query(queryString)
       .then((data: any) => {
-        console.log('res in route for USERS', data.rows);
+        //console.log('res in route for USERS', data.rows);
         res.json(data.rows);
       })
       .catch((error: Error) => {
@@ -37,12 +37,31 @@ module.exports = (db: any) => {
     db.query(queryString, queryParams)      
       .then((data: any) => {
         console.log('res in route for REGISTER', data.rows);
-        res.json(data.rows);
+        res.json(data.rows[0]);
       })
       .catch((error: Error) => {
         console.log(error.message);
       });
-  })
+  });
+
+
+    // Route to get the user's Dashboard:
+    router.get('/dashboard/:user_id', (req: Request, res: Response) => {
+      const user_id: string | number = req.params.user_id;
+
+      const queryParams: (string | number)[] = [user_id];
+      const queryString: string = `SELECT * FROM urls WHERE user_id = $1;`
+  
+      db.query(queryString, queryParams)
+        .then((data: any) => {
+          res.json(data.rows);
+        })
+        .catch((error: Error) => {
+          console.log(error.message);
+        });
+  
+    });
+
 
   return router;
 };
