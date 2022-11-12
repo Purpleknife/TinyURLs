@@ -99,6 +99,7 @@ const Register = (props: RegisterProps) => {
                 name='username'
                 autoFocus
                 ref={usernameInput}
+                required
               />
             </Form.Group>
 
@@ -109,6 +110,7 @@ const Register = (props: RegisterProps) => {
                 name='email'
                 placeholder="name@example.com"
                 ref={emailInput}
+                required
               />
             </Form.Group>
 
@@ -121,6 +123,7 @@ const Register = (props: RegisterProps) => {
                 type="password"
                 name='password'
                 ref={passwordInput}
+                required
               />
             </Form.Group>
 
@@ -133,6 +136,7 @@ const Register = (props: RegisterProps) => {
                 type="password"
                 name='password'
                 ref={passwordConfirmationInput}
+                required
               />
             </Form.Group>
 
