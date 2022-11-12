@@ -89,6 +89,7 @@ const Login = (props: LoginProps) => {
                 autoFocus
                 placeholder="name@example.com"
                 ref={emailInput}
+                required
               />
             </Form.Group>
 
@@ -101,6 +102,7 @@ const Login = (props: LoginProps) => {
                 type="password"
                 name='password'
                 ref={passwordInput}
+                required
               />
             </Form.Group>
           </Form>
