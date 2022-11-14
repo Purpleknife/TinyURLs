@@ -14,7 +14,8 @@ const ShortenURLs = () => {
   const user_id = cookies.user_id;
 
   const [shortURL, setShortURL] = useState<any>(null);
-  
+  const [allURLs, setAllURLs] = useState<any>(null);
+
   const longURLInput = useRef<any>(null);
   const title = useRef<any>(null);
 
@@ -38,7 +39,7 @@ const ShortenURLs = () => {
     })
       .then((res) => {
         console.log('Data saved', res.data);
-
+        
       })
       .catch((error) => {
         console.log(error.message);
