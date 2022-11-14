@@ -13,6 +13,9 @@ interface OneShortURLProps {
 const OneShortURL = (props: OneShortURLProps) => {
   return (
     <div className='container'>
+      <div className='one_card'>
+      <i className="fa-solid fa-trash"></i>
+      </div>
       {props.id}
       {props.title}
       {props.long_url}

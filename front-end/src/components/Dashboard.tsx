@@ -14,6 +14,7 @@ const Dashboard = () => {
   const user_id = cookies.user_id;
 
   const [allURLs, setAllURLs] = useState<any>(null);
+  const [urlList, setURLList] = useState<any>(null);
 
   const loadDashboard = async() => {
     await axios.get(`/dashboard/${user_id}`)
@@ -34,29 +35,42 @@ const Dashboard = () => {
     date_created: string;
   }
 
-  const urlList = allURLs.map((url: URL) => {
-    return (
-      <OneShortURL
-        key={url.id}
-        id={url.id}
-        title={url.title}
-        long_url={url.long_url}
-        short_url={url.short_url}
-        date={url.date_created}
-        fetch={loadDashboard}
-      />
-    )
-  })
+  const generateURLList = async() => {
+    const userURLList = allURLs.map((url: URL) => {
+      return (
+        <OneShortURL
+          key={url.id}
+          id={url.id}
+          title={url.title}
+          long_url={url.long_url}
+          short_url={url.short_url}
+          date={url.date_created}
+          fetch={loadDashboard}
+        />
+      )
+    });
+    setURLList(userURLList);
+
+  }
 
   useEffect(() => {
     loadDashboard();
   }, []);
 
+  useEffect(() => {
+    if (allURLs) {
+      generateURLList();
+    }
+  }, [allURLs]);
+
   return (
     <div>
       <NavBar />
       <ShortenURLs fetch={loadDashboard}/>
-      {urlList}
+
+      <div className='container'>
+        {urlList}
+      </div>
     </div>
   );
 }
