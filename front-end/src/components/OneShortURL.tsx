@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useCookies } from 'react-cookie';
 
@@ -6,6 +6,7 @@ import axios from 'axios';
 
 import './OneShortURL.scss';
 
+import CountVisits from './CountVisits';
 
 interface OneShortURLProps {
   id: string | number;
@@ -20,6 +21,11 @@ const OneShortURL = (props: OneShortURLProps) => {
   const [cookies, setCookie] = useCookies(['username', 'user_id', 'logged_in']);
   const user_id = cookies.user_id;
 
+  const [counter, setCounter] = useState<number>(0);
+  const [incrementCount, setIncrementCount] = useState<number>(0);
+
+
+  //Delete a short URL:
   const deleteShortURL = () => {
     axios.delete(`${user_id}/${props.id}`)
       .then(res => {
@@ -29,6 +35,25 @@ const OneShortURL = (props: OneShortURLProps) => {
       .catch(error => {
         console.log(error.message);
       });
+  };
+
+  //Increment the number of visits of a specific short URL whenever it gets clicked:
+  const incrementVisitsCount = () => {
+    axios.post(`/visits/${props.id}`)
+      .then(res => {
+        console.log('Edit', res.data);
+        setIncrementCount(prev => prev + 1);
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
+
+
+  //Redirect from short URL to long URL:
+  const redirectToLongURL = () => {
+    incrementVisitsCount();
+    window.open(props.long_url);
   };
 
 
@@ -44,10 +69,11 @@ const OneShortURL = (props: OneShortURLProps) => {
           {props.long_url}
         </span>
 
-        <span className='short_url'>
+        <span className='short_url' onClick={redirectToLongURL}>
           <strong><i className="fa-solid fa-scissors"></i></strong>&nbsp;&nbsp;
           {props.short_url}
-        </span>      
+        </span>
+        <CountVisits url_id={props.id} counter={counter} setCounter={setCounter} incrementCount={incrementCount} />    
       </div>
     </div>
   );

@@ -68,7 +68,7 @@ const Dashboard = () => {
   return (
     <div>
       <NavBar />
-      <ShortenURLs fetch={loadDashboard}/>
+      <ShortenURLs fetch={loadDashboard} />
 
       <div className='container'>
         {urlList}

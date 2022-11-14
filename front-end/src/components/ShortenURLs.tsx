@@ -20,8 +20,9 @@ const ShortenURLs = (props: ShortenURLsProps) => {
   const user_id = cookies.user_id;
 
   const [shortURL, setShortURL] = useState<any>(null);
-  const [urlCopied, setUrlCopied] = useState<any>(false);
-  const [save, setSave] = useState<any>(false);
+  const [urlCopied, setUrlCopied] = useState<boolean>(false);
+  const [save, setSave] = useState<boolean>(false);
+  
 
   const longURLInput = useRef<any>(null);
   const title = useRef<any>(null);
