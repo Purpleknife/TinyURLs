@@ -8,13 +8,15 @@ import { generateRandomShortURL } from '../helpers/helpers.js';
 
 import './ShortenURLs.scss';
 
+interface ShortenURLsProps {
+  fetch: () => void;
+};
 
-const ShortenURLs = () => {
+const ShortenURLs = (props: ShortenURLsProps) => {
   const [cookies, setCookie] = useCookies(['username', 'user_id', 'logged_in']);
   const user_id = cookies.user_id;
 
   const [shortURL, setShortURL] = useState<any>(null);
-  const [allURLs, setAllURLs] = useState<any>(null);
 
   const longURLInput = useRef<any>(null);
   const title = useRef<any>(null);
@@ -39,7 +41,7 @@ const ShortenURLs = () => {
     })
       .then((res) => {
         console.log('Data saved', res.data);
-        
+        props.fetch();
       })
       .catch((error) => {
         console.log(error.message);
