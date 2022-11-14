@@ -8,6 +8,8 @@ import NavBar from './NavBar';
 import ShortenURLs from './ShortenURLs';
 import OneShortURL from './OneShortURL';
 
+import './Dashboard.scss';
+
 
 const Dashboard = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['username', 'user_id', 'logged_in']);
