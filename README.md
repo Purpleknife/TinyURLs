@@ -15,5 +15,4 @@ This project's goal is to revisit an old project made with Node JS, Express and 
 - [X] They can login or register to save their generated tiny URLs.
 - [X] They can delete or edit the URLs.
 - [X] They can see how many times their tiny URL was clicked.
-
 - [ ] Styling. (=> <i>in progress</i>)
