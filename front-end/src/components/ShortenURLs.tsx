@@ -1,11 +1,18 @@
 import React, { useRef, useState } from 'react';
 
+import axios from 'axios';
+
+import { useCookies } from 'react-cookie';
+
 import { generateRandomShortURL } from '../helpers/helpers.js';
 
 import './ShortenURLs.scss';
 
 
 const ShortenURLs = () => {
+  const [cookies, setCookie] = useCookies(['username', 'user_id', 'logged_in']);
+  const user_id = cookies.user_id;
+
   const [shortURL, setShortURL] = useState<any>(null);
   
   const longURLInput = useRef<any>(null);
@@ -21,7 +28,22 @@ const ShortenURLs = () => {
     const longURL = longURLInput.current.value;
 
     window.open(longURL);
-  }
+  };
+
+  const saveToDatabase = () => {
+    axios.post(`/dashboard/${user_id}`, {
+      long_url: longURLInput.current.value,
+      short_url: shortURL,
+      title: title.current.value
+    })
+      .then((res) => {
+        console.log('Data saved', res.data);
+
+      })
+      .catch((error) => {
+        console.log(error.message);
+      })
+  };
 
   return (
     <div className='shorten_url'>
@@ -43,7 +65,7 @@ const ShortenURLs = () => {
         name='title'
         ref={title}
       />&nbsp;
-      <button type='submit'>Save</button>
+      <button type='submit' onClick={saveToDatabase}>Save</button>
     </div>
   );
 }
