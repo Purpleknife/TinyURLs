@@ -5,6 +5,8 @@ import axios from 'axios';
 import { useCookies } from 'react-cookie';
 
 import NavBar from './NavBar';
+import ShortenURLs from './ShortenURLs';
+
 
 const Dashboard = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['username', 'user_id', 'logged_in']);
@@ -27,6 +29,7 @@ const Dashboard = () => {
   return (
     <div>
       <NavBar />
+      <ShortenURLs />
     </div>
   );
 }
