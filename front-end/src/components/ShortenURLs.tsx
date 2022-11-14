@@ -6,6 +6,9 @@ import { useCookies } from 'react-cookie';
 
 import { generateRandomShortURL } from '../helpers/helpers.js';
 
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+
 import './ShortenURLs.scss';
 
 interface ShortenURLsProps {
@@ -17,22 +20,41 @@ const ShortenURLs = (props: ShortenURLsProps) => {
   const user_id = cookies.user_id;
 
   const [shortURL, setShortURL] = useState<any>(null);
+  const [urlCopied, setUrlCopied] = useState<any>(false);
+  const [save, setSave] = useState<any>(false);
 
   const longURLInput = useRef<any>(null);
   const title = useRef<any>(null);
 
+  //Save to database:
+  const showSave = () => {
+    setSave(!save);
+  }
+
+  //Copy URL to clipboard:
+  const copyURL = () => {
+    navigator.clipboard.writeText(shortURL);
+    setUrlCopied(!urlCopied);
+  };
+
+
+  //Shorten URL:
   const shortenURL = () => {    
     const generatedShortURL: string = generateRandomShortURL();
 
     setShortURL(generatedShortURL);
   };
 
+
+  //Redirect from short URL to long URL:
   const redirectToLongURL = () => {
     const longURL = longURLInput.current.value;
 
     window.open(longURL);
   };
 
+
+  //Save generated URL to database:
   const saveToDatabase = () => {
     axios.post(`/dashboard/${user_id}`, {
       long_url: longURLInput.current.value,
@@ -48,6 +70,7 @@ const ShortenURLs = (props: ShortenURLsProps) => {
       })
   };
 
+
   return (
     <div className='shorten_url'>
       <div className='long_url_input'>
@@ -58,10 +81,30 @@ const ShortenURLs = (props: ShortenURLsProps) => {
         />&nbsp;
       <button type='submit' onClick={shortenURL}>Shorten</button>
       </div>
-      <div className='short_url' onClick={redirectToLongURL}>
-        {shortURL}
-      </div>
+      {shortURL && 
+      <div>
+        <div className='short_url' onClick={redirectToLongURL}>
+          {shortURL}
+        </div>
 
+        <OverlayTrigger
+          key='right'
+          placement='right'
+          overlay={
+            <Tooltip id='tooltip-right'>
+              {urlCopied ? 'Copied!' : 'Copy to clipboard.'}
+            </Tooltip>
+          }
+        >
+          <i onClick={copyURL} className="fa-solid fa-copy"></i>
+        </OverlayTrigger>
+      </div>
+      }
+
+      <span>You want to save it? <i onClick={showSave} className="fa-solid fa-chevron-down"></i></span>
+
+      {save && 
+      <div>
       <input
         placeholder='Add a title...'
         type='title'
@@ -69,6 +112,7 @@ const ShortenURLs = (props: ShortenURLsProps) => {
         ref={title}
       />&nbsp;
       <button type='submit' onClick={saveToDatabase}>Save</button>
+      </div>}
     </div>
   );
 }
