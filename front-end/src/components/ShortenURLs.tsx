@@ -1,13 +1,27 @@
 import React, { useRef, useState } from 'react';
 
+import { generateRandomShortURL } from '../helpers/helpers.js';
+
 import './ShortenURLs.scss';
 
 
 const ShortenURLs = () => {
   const [shortURL, setShortURL] = useState<any>(null);
   
-  const longURL = useRef<any>(null);
+  const longURLInput = useRef<any>(null);
   const title = useRef<any>(null);
+
+  const shortenURL = () => {    
+    const generatedShortURL: string = generateRandomShortURL();
+
+    setShortURL(generatedShortURL);
+  };
+
+  const redirectToLongURL = () => {
+    const longURL = longURLInput.current.value;
+
+    window.open(longURL);
+  }
 
   return (
     <div className='shorten_url'>
@@ -15,15 +29,12 @@ const ShortenURLs = () => {
         <input 
           type='longurl'
           name='longurl'
-          ref={longURL}
+          ref={longURLInput}
         />&nbsp;
-      <button type='submit'>Shorten</button>
+      <button type='submit' onClick={shortenURL}>Shorten</button>
       </div>
-      <div className='short_url'>
-        <input 
-          defaultValue={shortURL}
-          disabled
-        />
+      <div className='short_url' onClick={redirectToLongURL}>
+        {shortURL}
       </div>
 
       <input
