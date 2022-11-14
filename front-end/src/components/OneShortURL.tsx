@@ -1,5 +1,9 @@
 import React from 'react';
 
+import { useCookies } from 'react-cookie';
+
+import axios from 'axios';
+
 import './OneShortURL.scss';
 
 
@@ -13,10 +17,25 @@ interface OneShortURLProps {
 }
 
 const OneShortURL = (props: OneShortURLProps) => {
+  const [cookies, setCookie] = useCookies(['username', 'user_id', 'logged_in']);
+  const user_id = cookies.user_id;
+
+  const deleteShortURL = () => {
+    axios.delete(`${user_id}/${props.id}`)
+      .then(res => {
+        console.log('Short URL deleted.', res. data);
+        props.fetch();
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
+
+
   return (
     <div className='container'>
       <div className='one_card'>
-        <i className="fa-solid fa-trash"></i>
+        <i onClick={deleteShortURL} className="fa-solid fa-trash"></i>
         <span className='title'>{props.title}</span>
         <span className='date'><i className="fa-solid fa-calendar-days"></i>&nbsp;{props.date.slice(0, 10)}</span>
           <br />

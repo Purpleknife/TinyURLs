@@ -12,7 +12,7 @@ import './Dashboard.scss';
 
 
 const Dashboard = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(['username', 'user_id', 'logged_in']);
+  const [cookies, setCookie] = useCookies(['username', 'user_id', 'logged_in']);
   const user_id = cookies.user_id;
 
   const [allURLs, setAllURLs] = useState<any>(null);
