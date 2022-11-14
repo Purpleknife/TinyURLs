@@ -109,6 +109,37 @@ module.exports = (db) => {
             console.log(error.message);
         });
     });
+    //Route to get visits count:
+    router.get('/visits/:url_id', (req, res) => {
+        const url_id = req.params.url_id;
+        const queryParams = [url_id];
+        const queryString = `SELECT * FROM visits WHERE url_id = $1;`;
+        db.query(queryString, queryParams)
+            .then((data) => {
+            res.json(data.rows);
+        })
+            .catch((error) => {
+            console.log(error.message);
+        });
+    });
+    //Route to increment visits count:
+    router.post('/visits/:url_id', (req, res) => {
+        const url_id = req.params.url_id;
+        const queryParams = [url_id];
+        const queryString = `
+    INSERT INTO visits (url_id, date_visited)
+    VALUES ($1, CURRENT_DATE)
+    RETURNING *;
+    `;
+        db.query(queryString, queryParams)
+            .then((data) => {
+            console.log('EDIT BACK-END', data.rows);
+            res.json(data.rows);
+        })
+            .catch((error) => {
+            console.log(error.message);
+        });
+    });
     return router;
 };
 //module.exports = router;
