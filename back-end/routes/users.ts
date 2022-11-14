@@ -114,6 +114,31 @@ module.exports = (db: any) => {
   });
 
 
+
+  //Route to delete a user's short URL:
+  router.delete('/dashboard/:user_id/:url_id', (req: Request, res: Response) => {
+    const user_id: string | number = req.params.user_id;
+    const url_id: string | number = req.params.url_id;
+
+    const queryParams: (string | number)[] = [user_id, url_id];
+    const queryString: string = `
+    DELETE FROM urls
+    WHERE user_id = $1
+    AND urls.id = $2
+    RETURNING *;
+    `;
+
+    db.query(queryString, queryParams)
+      .then((data: any) => {
+        res.json(data.rows);
+      })
+      .catch((error: Error) => {
+        console.log(error.message);
+      });
+  
+  });
+
+
     
 
 

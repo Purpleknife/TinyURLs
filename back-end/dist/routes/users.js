@@ -90,6 +90,25 @@ module.exports = (db) => {
             console.log(error.message);
         });
     });
+    //Route to delete a user's short URL:
+    router.delete('/dashboard/:user_id/:url_id', (req, res) => {
+        const user_id = req.params.user_id;
+        const url_id = req.params.url_id;
+        const queryParams = [user_id, url_id];
+        const queryString = `
+    DELETE FROM urls
+    WHERE user_id = $1
+    AND urls.id = $2
+    RETURNING *;
+    `;
+        db.query(queryString, queryParams)
+            .then((data) => {
+            res.json(data.rows);
+        })
+            .catch((error) => {
+            console.log(error.message);
+        });
+    });
     return router;
 };
 //module.exports = router;
