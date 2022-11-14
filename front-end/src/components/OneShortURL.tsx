@@ -23,7 +23,7 @@ const OneShortURL = (props: OneShortURLProps) => {
   const deleteShortURL = () => {
     axios.delete(`${user_id}/${props.id}`)
       .then(res => {
-        console.log('Short URL deleted.', res. data);
+        console.log('Short URL deleted.', res.data);
         props.fetch();
       })
       .catch(error => {
