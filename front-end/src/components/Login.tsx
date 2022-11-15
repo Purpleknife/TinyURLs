@@ -12,6 +12,9 @@ import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 
+import './Login.scss';
+
+
 interface LoginProps {
   handleClose: () => void;
   show: boolean;
