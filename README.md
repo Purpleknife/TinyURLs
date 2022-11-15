@@ -17,4 +17,4 @@ This project's goal is to revisit an old project made with Node JS, Express and 
 - [X] They can see how many times their tiny URL was clicked.
 
 ## Testing
-Since the project is limited in scope, I incluled some tests with Jest. (=> <i>in progress</i>)
+Since the project is limited in scope, I decided to include some tests with Jest. (=> <i>in progress</i>)
