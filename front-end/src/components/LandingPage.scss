@@ -1,2 +1,79 @@
 @import "~bootstrap/scss/bootstrap";
 @import "../styles/variables";
+
+.landing_page {
+
+  .navbar_lp {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2em;
+
+    .logo {
+      margin-top: 1em;
+      color: $primary-color;
+      font-family: $logo-font;
+      font-size: 3em;
+      margin-left: 4.5em;
+  
+      i {
+        color: $secondary-color;
+        font-size: 0.3em;
+        transform: scaleX(-1);
+        //padding-top: 1.8em;
+      }
+    }
+
+    .navbar_btn_lp {
+      margin-top: 4.5em;
+      margin-right: 17em;
+
+      .login_register {
+        width: 7em;
+        background-color: $primary-color;
+        color: black;
+        font-family: $secondary-font;
+        border: $another-color !important;
+        font-weight: bold;
+      }
+    }
+
+
+  }
+
+  .container_lp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+    margin-left: 2em;
+    
+
+    .catchphrase {
+      margin-top: 9em;
+
+      span {
+        font-family: $secondary-font;
+        font-size: 24px;
+        font-weight: bolder;
+      }
+
+      .getting_started {
+        margin-top: 1.5em;
+
+        .login_register {
+          width: 10em;
+          background-color: $another-color;
+          color: black;
+          font-family: $secondary-font;
+          border: $another-color !important;
+          font-weight: bold;
+        }
+      }
+      
+    }
+
+    .landing_img {
+      height: 45em;
+    }
+  }
+}
