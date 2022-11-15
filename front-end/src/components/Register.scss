@@ -1,0 +1,41 @@
+@import "../styles/variables";
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none !important;
+}
+
+.modal-title.h4 {
+  padding-left: 7.1em;
+  font-family: $secondary-font;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.modal-body {
+  font-family: $secondary-font;
+}
+
+label.form-label {
+  font-weight: bold;
+}
+
+#register {
+  background-color: $primary-color !important;
+  border: none !important;
+  border-radius: 3px;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  font-family: $secondary-font;
+}
+
+#alert {
+  width: 20em;
+  display: flex;
+  justify-content: center;
+  margin-left: 5.5em;
+}

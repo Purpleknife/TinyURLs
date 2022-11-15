@@ -11,6 +11,8 @@ import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 
+import './Register.scss';
+
 interface RegisterProps {
   handleClose: () => void;
   show: boolean
