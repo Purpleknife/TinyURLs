@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import { useCookies } from 'react-cookie';
 
-import { generateRandomShortURL } from '../helpers/helpers.js';
+import { generateRandomShortURL } from '../helpers/helpers';
 
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
