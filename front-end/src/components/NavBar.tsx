@@ -1,10 +1,10 @@
-import * as React from 'react';
-
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
 import { useCookies } from 'react-cookie';
+
+import './NavBar.scss';
 
 const NavBar = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['username', 'user_id', 'logged_in']);
@@ -25,12 +25,14 @@ const NavBar = () => {
   return (
     <nav>
       <div className='logo'>
-        TinyURLs
+        TinyURLs<i className="fa-solid fa-scissors"></i>
       </div>
-      <div className='welcome'>
-        Welcome, {username}!
+
+      <div className='side_nav'>
+        <span>Welcome, {username}!</span>&nbsp;&nbsp;
+        <button type='submit' className='logout' onClick={logout}>Logout</button>
       </div>
-      <button type='submit' onClick={logout}>Logout</button>
+      
     </nav>
   );
 }

@@ -1,0 +1,47 @@
+@import "../styles/variables";
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  height: 6em;
+  padding: 1.5em;
+  background-color: #f5faff;
+  background-image: url('../../public/images/colors.png');
+  background-position: 5vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-clip: inherit;
+
+  .logo {
+    color: $primary-color;
+    font-family: $logo-font;
+    font-size: 2.5em;
+    margin-left: 1.5em;
+  }
+
+  i {
+    color: $secondary-color;
+    font-size: 0.3em;
+    transform: scaleX(-1);
+    //padding-top: 1.8em;
+  }
+
+  .side_nav {
+    font-family: $secondary-font;
+    padding-top: 1em;
+
+    span {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .logout {
+      background-color: $primary-color;
+      border: $primary-color;
+      width: 5em;
+      height: 2em;
+      border-radius: 5px;
+      font-size: 1.1em;
+    }
+  }
+}
