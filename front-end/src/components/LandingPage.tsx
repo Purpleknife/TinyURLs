@@ -27,12 +27,12 @@ const LandingPage = () => {
         </div>
 
         <div className='navbar_btn_lp'>
-            <Button className='login_register' onClick={handleLoginShow}>
+            <Button data-testid='login' id='login' onClick={handleLoginShow}>
               Login
             </Button>
             <Login handleClose={handleLoginClose} show={showLogin}/>
             &nbsp;&nbsp;
-            <Button className='login_register' onClick={handleRegisterShow}>
+            <Button data-testid='register' id='register' onClick={handleRegisterShow}>
               Register
             </Button>
             <Register handleClose={handleRegisterClose} show={showRegister}/>
