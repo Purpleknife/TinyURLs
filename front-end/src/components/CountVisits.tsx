@@ -17,9 +17,6 @@ const CountVisits = (props: CountVisitsProps) => {
         console.log('visits', res.data);
         props.setCounter(res.data.length);
       })
-      .catch((error) => {
-        console.log(error.message);
-      })
   };
 
   useEffect(() => {

@@ -18,15 +18,12 @@ const Dashboard = () => {
   const [allURLs, setAllURLs] = useState<any>(null);
   const [urlList, setURLList] = useState<any>(null);
 
-  const loadDashboard = async() => {
-    await axios.get(`/dashboard/${user_id}`)
+  const loadDashboard = () => {
+    return axios.get(`/dashboard/${user_id}`)
       .then(res => {
         console.log(res.data);
         setAllURLs(res.data);
       })
-      .catch(error => {
-        console.log(error.message);
-      });
   };
 
   interface URL {
@@ -37,7 +34,7 @@ const Dashboard = () => {
     date_created: string;
   }
 
-  const generateURLList = async() => {
+  const generateURLList = () => {
     const userURLList = allURLs.map((url: URL) => {
       return (
         <OneShortURL

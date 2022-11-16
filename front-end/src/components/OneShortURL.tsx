@@ -69,7 +69,7 @@ const OneShortURL = (props: OneShortURLProps) => {
           {props.long_url}
         </span>
 
-        <span className='short_url' onClick={redirectToLongURL}>
+        <span data-testid='short_url' className='short_url' onClick={redirectToLongURL}>
           <strong><i className="fa-solid fa-scissors"></i></strong>&nbsp;&nbsp;
           {props.short_url}
         </span>
