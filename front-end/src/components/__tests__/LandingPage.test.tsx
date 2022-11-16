@@ -1,11 +1,12 @@
 import { BrowserRouter } from 'react-router-dom';
 
-import { render, cleanup, fireEvent, getByText, getByLabelText, queryByLabelText } from "@testing-library/react";
+import { render, cleanup, fireEvent } from "@testing-library/react";
 
 import LandingPage from "../LandingPage";
 
-afterEach(cleanup);
 
+afterEach(cleanup);
+jest.mock('axios');
 describe("LandingPage", () => {
   it("renders without crashing", () => {
     render(
@@ -38,8 +39,8 @@ describe("LandingPage", () => {
   });
 
 
-  it("it should open a popup form when you click on Login button", () => {
-    const { getByTestId, getByLabelText } = render(
+  it("it should open a popup form when you click on Login button", async() => {
+    const { getByTestId, getByLabelText, getByPlaceholderText } = render(
       <BrowserRouter>
         <LandingPage />
       </BrowserRouter>
@@ -51,7 +52,9 @@ describe("LandingPage", () => {
 
     expect(getByLabelText("Email address:")).toBeInTheDocument();
     expect(getByLabelText("Password:")).toBeInTheDocument();
+
   });
+
 
 
   it("it should open a popup form when you click on Register button", () => {

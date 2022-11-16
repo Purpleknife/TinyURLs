@@ -40,7 +40,7 @@ const Login = (props: LoginProps) => {
     const email = emailInput.current.value;
     const password = passwordInput.current.value;
 
-    axios.get('/users')
+    return axios.get('/users')
       .then(res => {
         const allUsers = res.data;
 
@@ -102,6 +102,7 @@ const Login = (props: LoginProps) => {
             >
               <Form.Label>Password:</Form.Label>
               <Form.Control
+                data-testid='password'
                 type="password"
                 name='password'
                 ref={passwordInput}
@@ -112,7 +113,7 @@ const Login = (props: LoginProps) => {
         </Modal.Body>
         <Modal.Footer>
 
-          <Button id='login' onClick={loginUser}>
+          <Button data-testid='login-btn' id='login' onClick={loginUser}>
             Login
           </Button>
         </Modal.Footer>
