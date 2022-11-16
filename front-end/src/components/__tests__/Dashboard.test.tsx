@@ -18,10 +18,10 @@ describe("Dashboard", () => {
   it("loads the user's data => their saved short URLs", async() => {
     const mockData = [{
       id: 1,
-      title: 'goo',
+      title: 'Google',
       long_url: 'https://google.com',
       short_url: 'tiny.url/obefaz',
-      date_created: '2022-11-14T07:00:00.000Z'
+      date_created: '2022-11-14'
     }];
 
     (axios.get as jest.Mock).mockResolvedValue({ data: mockData })
