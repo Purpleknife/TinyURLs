@@ -27,7 +27,7 @@ const OneShortURL = (props: OneShortURLProps) => {
 
   //Delete a short URL:
   const deleteShortURL = () => {
-    axios.delete(`${user_id}/${props.id}`)
+    return axios.delete(`${user_id}/${props.id}`)
       .then(res => {
         console.log('Short URL deleted.', res.data);
         props.fetch();
@@ -60,7 +60,7 @@ const OneShortURL = (props: OneShortURLProps) => {
   return (
     <div className='container'>
       <div className='one_card'>
-        <i onClick={deleteShortURL} className="fa-solid fa-trash"></i>
+        <i data-testid='delete' onClick={deleteShortURL} className="fa-solid fa-trash"></i>
         <span className='title'>{props.title}</span>
         <span className='date'><i className="fa-solid fa-calendar-days"></i>&nbsp;{props.date.slice(0, 10)}</span>
           <br />

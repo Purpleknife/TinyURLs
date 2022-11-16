@@ -5,7 +5,8 @@ import axios from 'axios';
 import { render,
   fireEvent,
   cleanup,
-  waitFor
+  waitFor,
+  queryByTestId
 } from "@testing-library/react";
 
 
@@ -13,7 +14,10 @@ import Dashboard from "../Dashboard";
 
 afterEach(cleanup);
 
-jest.mock('axios');
+jest.mock('axios', () => ({
+  get: jest.fn(),
+  delete: jest.fn(),
+}));
 
 describe("Dashboard", () => {
   it("loads the user's data => their saved short URLs", async() => {
@@ -70,7 +74,7 @@ describe("Dashboard", () => {
     }];
 
     (axios.get as jest.Mock).mockResolvedValue({ data: mockData })
-    
+
     const { getByTestId } = render(
       <BrowserRouter>
         <Dashboard />
@@ -84,6 +88,36 @@ describe("Dashboard", () => {
     (axios.get as jest.Mock).mockResolvedValue(Promise.resolve());
 
     await waitFor(() => expect(location.pathname).toEqual('/'));
+  });
+
+
+  it("you can delete a Short URL from the Dashboard", async() => {
+    const mockData = [{
+      user_id: 1,
+      id: 1,
+      title: 'Google',
+      long_url: 'https://google.com',
+      short_url: 'tiny.url/obefaz',
+      date_created: '2022-11-14'
+    }];
+
+    (axios.get as jest.Mock).mockResolvedValue({ data: mockData })
+    
+    const { getByTestId, queryByTestId } = render(
+      <BrowserRouter>
+        <Dashboard />
+      </BrowserRouter>
+    );
+
+    await waitFor(() => getByTestId('delete'));
+
+    //const button = getByTestId('delete');
+
+    //fireEvent.click(getByTestId('delete'));
+
+    (axios.delete as jest.Mock).mockResolvedValue({});
+
+    //await waitFor(() => expect(queryByTestId('short_url')).toBeNull());
   });
 
 
