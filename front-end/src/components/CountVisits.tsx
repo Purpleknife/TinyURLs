@@ -14,7 +14,6 @@ const CountVisits = (props: CountVisitsProps) => {
   const getVisitsNumber = () => {
     axios.get(`/visits/${props.url_id}`)
       .then((res) => {
-        console.log('visits', res.data);
         props.setCounter(res.data.length);
       })
   };

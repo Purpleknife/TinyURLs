@@ -39,4 +39,24 @@ describe("Dashboard", () => {
   });
 
 
+  it("throws an error when the data is not loaded", async() => {
+    
+    const logSpy = jest.spyOn(console, 'log');
+    const err = new Error('Data not loaded.');
+
+    console.log(err);
+
+    (axios.get as jest.Mock).mockRejectedValueOnce(err);
+
+    render(
+      <BrowserRouter>
+        <Dashboard />
+      </BrowserRouter>
+    );
+
+    expect(logSpy).toHaveBeenCalledWith(err);
+    
+  });
+
+
 });

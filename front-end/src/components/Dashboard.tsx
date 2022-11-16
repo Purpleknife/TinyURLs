@@ -21,8 +21,10 @@ const Dashboard = () => {
   const loadDashboard = () => {
     return axios.get(`/dashboard/${user_id}`)
       .then(res => {
-        console.log(res.data);
         setAllURLs(res.data);
+      })
+      .catch(error => {
+        console.log(error.message);
       })
   };
 
