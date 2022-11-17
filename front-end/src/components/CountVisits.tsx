@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
+import moment from "moment";
+
 import axios from 'axios';
+
+import './CountVisits.scss';
 
 interface CountVisitsProps {
   url_id: number | string;
@@ -10,11 +14,15 @@ interface CountVisitsProps {
 }
 
 const CountVisits = (props: CountVisitsProps) => {
-
+  const [lastVisit, setLastVisit] = useState<any>('No visits yet.');
+  
   const getVisitsNumber = () => {
     axios.get(`/visits/${props.url_id}`)
       .then((res) => {
         props.setCounter(res.data.length);
+        if (res.data[res.data.length - 1].date_visited) {
+          setLastVisit(moment(res.data[res.data.length - 1].date_visited).format('MMMM Do YYYY, h:mm:ss a'));
+        }
       })
   };
 
@@ -22,9 +30,15 @@ const CountVisits = (props: CountVisitsProps) => {
     getVisitsNumber();
   }, [props.incrementCount]);
 
+
   return (
-    <div>
-      {props.counter}
+    <div className='trafic'>
+
+      <i className="fa-solid fa-circle-info"></i> Traffic <br />
+      Number of visits: {props.counter}
+      <br />
+      Last visit: {lastVisit && lastVisit}
+
     </div>
   );
 }
