@@ -10,7 +10,6 @@ import { render,
 
 
 import Dashboard from "../Dashboard";
-import OneShortURL from '../OneShortURL';
 
 afterEach(cleanup);
 
@@ -199,11 +198,6 @@ describe("Dashboard", () => {
     await waitFor(() => fireEvent.click(getByTestId('save')));
 
     expect(getByPlaceholderText(/Add a title.../i)).toBeInTheDocument();
-
-    fireEvent.change(getByPlaceholderText(/Add a title.../i), {
-      target: { value: "Test" }
-    });
-
     
   });
 
