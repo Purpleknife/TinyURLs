@@ -2,6 +2,10 @@
 @import "../styles/variables";
 
 .landing_page {
+  background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
+  min-height: 100vh;
+  padding-top: 0.2em;
+
 
   .navbar_lp {
     display: flex;
@@ -12,8 +16,9 @@
       margin-top: 1em;
       color: $primary-color;
       font-family: $logo-font;
-      font-size: 3em;
-      margin-left: 4.5em;
+      font-size: 3.5em;
+      margin-left: 2.5em;
+      cursor: pointer;
   
       i {
         color: $secondary-color;
@@ -25,15 +30,35 @@
 
     .navbar_btn_lp {
       margin-top: 4.5em;
-      margin-right: 17em;
+      margin-right: 12.5em;
 
-      #login #register {
+      .login_and_register {
         width: 7em;
+        height: 2.5em;
         background-color: $primary-color;
-        color: black;
+        color: #ffffff;
         font-family: $secondary-font;
         border: $another-color !important;
         font-weight: bold;
+        font-size: 18px;
+      }
+    }
+
+    .useless_links {
+      margin-top: 4.5em;
+      font-size: 18px;
+      font-family: $secondary-font;
+      font-weight: bold;
+      margin-right: -30em;
+      color: $primary-color;
+
+      span {
+        padding-left: 3.5em;
+        cursor: pointer;
+
+        &:hover {
+          color: $secondary-color;
+        }
       }
     }
 
@@ -49,19 +74,22 @@
     
 
     .catchphrase {
-      margin-top: 9em;
+      margin-top: 0.5em;
 
       span {
         font-family: $secondary-font;
-        font-size: 24px;
+        font-size: 28px;
         font-weight: bolder;
+        color: $secondary-color;
       }
 
       .getting_started {
-        margin-top: 1.5em;
+        margin-top: 2.5em;
 
         .login_register {
           width: 10em;
+          height: 2.5em;
+          font-size: 18px;
           background-color: $another-color;
           color: black;
           font-family: $secondary-font;
@@ -73,6 +101,9 @@
     }
 
     .landing_img {
+      img {
+        height: 35em;
+      }
       height: 45em;
     }
   }

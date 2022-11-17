@@ -26,13 +26,19 @@ const LandingPage = () => {
           TinyURLs<i className="fa-solid fa-scissors"></i>
         </div>
 
+        <div className='useless_links'>
+          <span>Why TinyURLs?</span>
+          <span>About</span>
+          <span>Contact</span>
+        </div>
+
         <div className='navbar_btn_lp'>
-            <Button data-testid='login' id='login' onClick={handleLoginShow}>
+            <Button data-testid='login' className='login_and_register' onClick={handleLoginShow}>
               Login
             </Button>
             <Login handleClose={handleLoginClose} show={showLogin}/>
             &nbsp;&nbsp;
-            <Button data-testid='register' id='register' onClick={handleRegisterShow}>
+            <Button data-testid='register' className='login_and_register' onClick={handleRegisterShow}>
               Register
             </Button>
             <Register handleClose={handleRegisterClose} show={showRegister}/>
@@ -45,6 +51,7 @@ const LandingPage = () => {
           
           <span>
             With TinyURLs, you can shorten your URLs and save them in your Dashboard.
+            <br />
             <br />
             Login or Register to get started.
           </span>
@@ -59,7 +66,7 @@ const LandingPage = () => {
 
         <div className='landing_img'>
           <img
-            src='images/url.png'
+            src='images/url2.png'
             alt='logo-img'
           />
         </div>
