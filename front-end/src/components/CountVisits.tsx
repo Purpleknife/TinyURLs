@@ -34,10 +34,10 @@ const CountVisits = (props: CountVisitsProps) => {
   return (
     <div className='trafic'>
 
-      <i className="fa-solid fa-circle-info"></i> Traffic <br />
-      Number of visits: {props.counter}
+      <i className="fa-solid fa-circle-info"></i> <span id='title'>Traffic</span> <br />
+      <span className='tiny_title'>Number of visits:</span> {props.counter}
       <br />
-      Last visit: {lastVisit && lastVisit}
+      <span className='tiny_title'>Last visit:</span> {lastVisit && lastVisit}
 
     </div>
   );

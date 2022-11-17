@@ -1,0 +1,23 @@
+@import "../styles/variables";
+
+.trafic {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  //margin-left: 2em;
+  text-align: left;
+  font-family: $secondary-font;
+
+  i {
+    color: $secondary-color;
+  }
+
+  #title {
+    font-weight: bold;
+    color: $secondary-color;
+  }
+
+  .tiny_title {
+    font-weight: bold;
+  }
+
+}
