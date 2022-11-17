@@ -58,7 +58,7 @@ const ShortenURLs = (props: ShortenURLsProps) => {
   //Save generated URL to database:
   const saveToDatabase = () => {
     return axios.post(`/dashboard/${user_id}`, {
-      long_url: longURL,
+      long_url: saveLongURL,
       short_url: shortURL,
       title: title.current.value
     })

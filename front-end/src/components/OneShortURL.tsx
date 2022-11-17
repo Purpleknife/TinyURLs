@@ -8,6 +8,9 @@ import './OneShortURL.scss';
 
 import CountVisits from './CountVisits';
 
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+
 interface OneShortURLProps {
   id: string | number;
   title: string;
@@ -24,6 +27,14 @@ const OneShortURL = (props: OneShortURLProps) => {
   const [counter, setCounter] = useState<number>(0);
   const [incrementCount, setIncrementCount] = useState<number>(0);
 
+  const [urlCopied, setUrlCopied] = useState<boolean>(false);
+  
+
+  //Copy URL to clipboard:
+  const copyURL = () => {
+    navigator.clipboard.writeText(props.short_url);
+    setUrlCopied(!urlCopied);
+  };
 
   //Delete a short URL:
   const deleteShortURL = () => {
@@ -60,7 +71,10 @@ const OneShortURL = (props: OneShortURLProps) => {
   return (
     <div className='container'>
       <div className='one_card'>
-        <i data-testid='delete' onClick={deleteShortURL} className="fa-solid fa-trash"></i>
+        <div className='options'>
+          <i className="fa-solid fa-pen-to-square"></i>
+          <i data-testid='delete' onClick={deleteShortURL} className="fa-solid fa-trash"></i>
+        </div>
         <span className='title'>{props.title}</span>
         <span className='date'><i className="fa-solid fa-calendar-days"></i>&nbsp;{props.date.slice(0, 10)}</span>
           <br />
@@ -69,9 +83,21 @@ const OneShortURL = (props: OneShortURLProps) => {
           {props.long_url}
         </span>
 
-        <span data-testid='short_url' className='short_url' onClick={redirectToLongURL}>
+        <span data-testid='short_url' className='short_url' >
           <strong><i className="fa-solid fa-scissors"></i></strong>&nbsp;&nbsp;
-          {props.short_url}
+          <span id='tiny_url' onClick={redirectToLongURL}>{props.short_url}</span>
+
+          <OverlayTrigger
+            key='bottom'
+            placement='bottom'
+            overlay={
+              <Tooltip id='tooltip-bottom'>
+                {urlCopied ? 'Copied!' : 'Copy to clipboard.'}
+              </Tooltip>
+            }
+          >
+            <i onClick={copyURL} className="fa-solid fa-copy"></i>
+          </OverlayTrigger>
         </span>
         <CountVisits url_id={props.id} counter={counter} setCounter={setCounter} incrementCount={incrementCount} />    
       </div>
