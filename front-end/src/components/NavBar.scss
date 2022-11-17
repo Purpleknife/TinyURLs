@@ -5,8 +5,8 @@ nav {
   justify-content: space-between;
   height: 6em;
   //padding: 1.5em;
-  //background-color: $other-color;
-  background-image: url('../../public/images/colors.png');
+  background-color: $other-color;
+  //background-image: url('../../public/images/colors.png');
   // background-position: 5vh;
   background-repeat: no-repeat;
   background-size: cover;
@@ -15,14 +15,14 @@ nav {
   padding-right: 3em;
 
   .logo {
-    color: $primary-color;
+    color: $secondary-color;
     font-family: $logo-font;
     font-size: 2.5em;
     margin-left: 1.5em;
   }
 
   i {
-    color: $secondary-color;
+    color: $primary-color;
     font-size: 0.3em;
     transform: scaleX(-1);
     //padding-top: 1.8em;
@@ -42,8 +42,8 @@ nav {
     }
 
     .logout {
-      margin-left: 1.5em;
-      margin-right: 3.9em;
+      margin-left: 0.5em;
+      //margin-right: 1.9em;
       background-color: $primary-color;
       border: $primary-color;
       width: 5em;
