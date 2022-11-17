@@ -65,7 +65,7 @@ const Dashboard = () => {
   }, [allURLs]);
 
   return (
-    <div>
+    <div className='dashboard'>
       <NavBar />
       <ShortenURLs fetch={loadDashboard} />
 

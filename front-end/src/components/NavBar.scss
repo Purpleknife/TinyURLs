@@ -4,13 +4,15 @@ nav {
   display: flex;
   justify-content: space-between;
   height: 6em;
-  padding: 1.5em;
-  background-color: #f5faff;
+  //padding: 1.5em;
+  //background-color: $other-color;
   background-image: url('../../public/images/colors.png');
-  background-position: 5vh;
+  // background-position: 5vh;
   background-repeat: no-repeat;
   background-size: cover;
-  background-clip: inherit;
+  // background-clip: inherit;
+  padding-top: 1em;
+  padding-right: 3em;
 
   .logo {
     color: $primary-color;
@@ -31,17 +33,25 @@ nav {
     padding-top: 1em;
 
     span {
-      font-size: 1.2em;
-      font-weight: bold;
+      font-size: 1.1em;
+
+      .username {
+        font-weight: bold;
+        cursor: pointer;
+      }
     }
 
     .logout {
+      margin-left: 1.5em;
+      margin-right: 3.9em;
       background-color: $primary-color;
       border: $primary-color;
       width: 5em;
       height: 2em;
       border-radius: 5px;
       font-size: 1.1em;
+      font-weight: bold;
+      color: white;
     }
   }
 }

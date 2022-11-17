@@ -29,7 +29,7 @@ const NavBar = () => {
       </div>
 
       <div className='side_nav'>
-        <span>Welcome, {username}!</span>&nbsp;&nbsp;
+        <span>Welcome, <span className='username'>{username}</span>!</span>&nbsp;&nbsp;
         <button data-testid='logout' type='submit' className='logout' onClick={logout}>Logout</button>
       </div>
       
