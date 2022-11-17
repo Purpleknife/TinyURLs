@@ -2,7 +2,7 @@
 @import "../styles/variables";
 
 .landing_page {
-  background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
+  background-image: url("../../public/images/inspiration-geometry.png");
   min-height: 100vh;
   padding-top: 0.2em;
 
@@ -91,7 +91,7 @@
           height: 2.5em;
           font-size: 18px;
           background-color: $another-color;
-          color: black;
+          color: white;
           font-family: $secondary-font;
           border: $another-color !important;
           font-weight: bold;
