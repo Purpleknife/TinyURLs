@@ -39,7 +39,7 @@ const OneShortURL = (props: OneShortURLProps) => {
 
   //Increment the number of visits of a specific short URL whenever it gets clicked:
   const incrementVisitsCount = () => {
-    axios.post(`/visits/${props.id}`)
+    return axios.post(`/visits/${props.id}`)
       .then(res => {
         console.log('Edit', res.data);
         setIncrementCount(prev => prev + 1);

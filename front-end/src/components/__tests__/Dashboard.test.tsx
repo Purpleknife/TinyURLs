@@ -5,19 +5,20 @@ import axios from 'axios';
 import { render,
   fireEvent,
   cleanup,
-  waitFor,
-  queryByTestId,
-  getByDisplayValue,
-  findAllByTestId
+  waitFor
 } from "@testing-library/react";
 
 
 import Dashboard from "../Dashboard";
+import OneShortURL from '../OneShortURL';
 
 afterEach(cleanup);
 
+window.open = jest.fn();
+
 jest.mock('axios', () => ({
   get: jest.fn(),
+  post: jest.fn(),
   delete: jest.fn(),
 }));
 
@@ -123,6 +124,7 @@ describe("Dashboard", () => {
   });
 
 
+
   it("you can shorten then copy a tiny URL", async() => {
     const mockData = [{
       id: 1,
@@ -161,6 +163,81 @@ describe("Dashboard", () => {
 
     await waitFor(() => expect(window.navigator.clipboard.writeText)
       .toHaveBeenCalledTimes(1)); //The tiny URL changes everytime so can't use "ToHaveBeenCalled()".
+
+  });
+
+
+
+  it("you can save your tiny URL to the database", async() => {
+    const mockData = [{
+      id: 1,
+      title: 'Google',
+      long_url: 'https://google.com',
+      short_url: 'tiny.url/obefaz',
+      date_created: '2022-11-14'
+    }];
+
+    (axios.get as jest.Mock).mockResolvedValue({ data: mockData })
+    
+    const { getByTestId, getByPlaceholderText } = render(
+      <BrowserRouter>
+        <Dashboard />
+      </BrowserRouter>
+    );
+
+    fireEvent.change(getByPlaceholderText(/Enter your URL/i), {
+      target: { value: "https://google.com" }
+    });
+
+    fireEvent.click(getByTestId('shorten'));
+
+    expect(getByTestId('tiny-url')).toBeInTheDocument();
+    expect(getByTestId('tiny-url')).toHaveTextContent('tiny.url/');
+
+    await waitFor(() => getByTestId('save'));
+
+    await waitFor(() => fireEvent.click(getByTestId('save')));
+
+    expect(getByPlaceholderText(/Add a title.../i)).toBeInTheDocument();
+
+    fireEvent.change(getByPlaceholderText(/Add a title.../i), {
+      target: { value: "Test" }
+    });
+
+    
+  });
+
+
+
+  it("you can click on a tiny URL and be redirected to its long URL", async() => {
+    const mockData = [{
+      id: 1,
+      title: 'Google',
+      long_url: 'https://google.com',
+      short_url: 'tiny.url/obefaz',
+      date_created: '2022-11-14'
+    }];
+
+    (axios.get as jest.Mock).mockResolvedValue({ data: mockData })
+    
+    const { getByTestId, getByPlaceholderText } = render(
+      <BrowserRouter>
+        <Dashboard />
+      </BrowserRouter>
+    );
+
+    fireEvent.change(getByPlaceholderText(/Enter your URL/i), {
+      target: { value: "https://google.com" }
+    });
+
+    fireEvent.click(getByTestId('shorten'));
+
+    expect(getByTestId('tiny-url')).toBeInTheDocument();
+    expect(getByTestId('tiny-url')).toHaveTextContent('tiny.url/');
+
+    await waitFor(() => fireEvent.click(getByTestId('tiny-url')));
+
+    expect(window.open).toHaveBeenCalledTimes(1);
 
   });
 

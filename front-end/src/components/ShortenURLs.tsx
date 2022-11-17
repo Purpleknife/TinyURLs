@@ -57,7 +57,7 @@ const ShortenURLs = (props: ShortenURLsProps) => {
 
   //Save generated URL to database:
   const saveToDatabase = () => {
-    axios.post(`/dashboard/${user_id}`, {
+    return axios.post(`/dashboard/${user_id}`, {
       long_url: longURLInput.current.value,
       short_url: shortURL,
       title: title.current.value
@@ -103,7 +103,7 @@ const ShortenURLs = (props: ShortenURLsProps) => {
       </div>
       }
 
-      <span>You want to save it? <i onClick={showSave} className="fa-solid fa-chevron-down"></i></span>
+      <span>You want to save it? <i onClick={showSave} data-testid='save' className="fa-solid fa-chevron-down"></i></span>
 
       {save && 
       <div>
@@ -113,7 +113,7 @@ const ShortenURLs = (props: ShortenURLsProps) => {
         name='title'
         ref={title}
       />&nbsp;
-      <button type='submit' onClick={saveToDatabase}>Save</button>
+      <button type='submit' data-testid='save-btn' onClick={saveToDatabase}>Save</button>
       </div>}
     </div>
   );
