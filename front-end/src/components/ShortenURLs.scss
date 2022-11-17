@@ -2,27 +2,97 @@
 @import "../styles/variables";
 
 .shorten_url {
-  border: 1px solid black;
-  width: 30%;
-  margin-left: 2em;
+  border: 1px solid $another-color;
+  background-color: rgb(252, 188, 160, 0.5);
+  width: 35%;
+  margin-left: 40em;
   margin-top: 2em;
-  padding-bottom: 1em;
+  padding-bottom: 3em;
+  padding-top: 1em;
   text-align: center;
 
   .long_url_input {
     padding-top: 1em;
     padding-bottom: 2em;
-  }
 
-  .short_url {
-    margin-bottom: 1em;
-    border: 1px solid black;
-    width: 13em;
-    margin-left: 3em;
-    cursor: pointer;
+    input {
+      width: 18em;
+      font-family: $secondary-font;
+    }
 
-    &:hover {
-      color: rgb(83, 173, 233);
+    .shorten_btn {
+      background-color: $primary-color;
+      border: $primary-color;
+      width: 5em;
+      height: 1.9em;
+      border-radius: 5px;
+      font-size: 1em;
+      font-weight: bold;
+      color: white;
+      font-family: $secondary-font;
     }
   }
+
+  .tiny_url_div {
+    font-family: $secondary-font;
+    border: 1px solid $another-color;
+    width: 23em;
+    margin-left: 9.4em;
+    height: 2.5em;
+    padding-top: 0.5em;
+
+    span {
+      //margin-bottom: 1em;
+      margin-top: 1em;
+      cursor: pointer;
+      font-weight: bold;
+  
+      &:hover {
+        color: rgb(83, 173, 233);
+      }
+    }
+
+    .fa-copy {
+      cursor: pointer;
+      color: $primary-color;
+      float: right;
+      padding-right: 0.5em;
+      padding-top: 0.3em;
+    }
+  }
+
+  p {
+    margin-top: 1em;
+    font-family: $secondary-font;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .save_div {
+    //margin-left: -1.8em;
+
+    input {
+      width: 18em;
+      font-family: $secondary-font;
+    }
+
+    button {
+      background-color: $secondary-color;
+      border: $primary-color;
+      width: 5em;
+      height: 1.9em;
+      border-radius: 5px;
+      font-size: 1em;
+      font-weight: bold;
+      color: white;
+      font-family: $secondary-font;
+    }
+  }
+
+}
+
+#hide {
+  color: grey;
+  font-size: 10px;
+  font-style: italic;
 }
