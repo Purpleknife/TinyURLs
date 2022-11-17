@@ -75,16 +75,17 @@ const ShortenURLs = (props: ShortenURLsProps) => {
   return (
     <div className='shorten_url'>
       <div className='long_url_input'>
-        <input 
+        <input
+          placeholder='Enter your URL'
           type='longurl'
           name='longurl'
           ref={longURLInput}
         />&nbsp;
-      <button type='submit' onClick={shortenURL}>Shorten</button>
+      <button data-testid='shorten' type='submit' onClick={shortenURL}>Shorten</button>
       </div>
       {shortURL && 
       <div>
-        <div className='short_url' onClick={redirectToLongURL}>
+        <div data-testid='tiny-url' className='short_url' onClick={redirectToLongURL}>
           {shortURL}
         </div>
 
@@ -97,7 +98,7 @@ const ShortenURLs = (props: ShortenURLsProps) => {
             </Tooltip>
           }
         >
-          <i onClick={copyURL} className="fa-solid fa-copy"></i>
+          <i onClick={copyURL} data-testid='copy' className="fa-solid fa-copy"></i>
         </OverlayTrigger>
       </div>
       }

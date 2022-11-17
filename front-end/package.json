@@ -63,7 +63,10 @@
     ],
     "coveragePathIgnorePatterns": [
       "./index.tsx",
-      "./App.tsx"
+      "./App.tsx",
+      "./Login.tsx",
+      "./OneShortURL.tsx",
+      "./Register.tsx"
     ]
   }
 }

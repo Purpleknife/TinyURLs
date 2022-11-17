@@ -6,7 +6,9 @@ import { render,
   fireEvent,
   cleanup,
   waitFor,
-  queryByTestId
+  queryByTestId,
+  getByDisplayValue,
+  findAllByTestId
 } from "@testing-library/react";
 
 
@@ -103,7 +105,7 @@ describe("Dashboard", () => {
 
     (axios.get as jest.Mock).mockResolvedValue({ data: mockData })
     
-    const { getByTestId, queryByTestId } = render(
+    const { getByTestId } = render(
       <BrowserRouter>
         <Dashboard />
       </BrowserRouter>
@@ -118,6 +120,48 @@ describe("Dashboard", () => {
     (axios.delete as jest.Mock).mockResolvedValue({});
 
     //await waitFor(() => expect(queryByTestId('short_url')).toBeNull());
+  });
+
+
+  it("you can shorten then copy a tiny URL", async() => {
+    const mockData = [{
+      id: 1,
+      title: 'Google',
+      long_url: 'https://google.com',
+      short_url: 'tiny.url/obefaz',
+      date_created: '2022-11-14'
+    }];
+
+    (axios.get as jest.Mock).mockResolvedValue({ data: mockData })
+    
+    const { getByTestId, getByPlaceholderText } = render(
+      <BrowserRouter>
+        <Dashboard />
+      </BrowserRouter>
+    );
+
+    fireEvent.change(getByPlaceholderText(/Enter your URL/i), {
+      target: { value: "https://google.com" }
+    });
+
+    fireEvent.click(getByTestId('shorten'));
+
+    expect(getByTestId('tiny-url')).toBeInTheDocument();
+    expect(getByTestId('tiny-url')).toHaveTextContent('tiny.url/');
+
+    await waitFor(() => getByTestId('copy'));
+
+    Object.assign(window.navigator, {
+      clipboard: {
+        writeText: jest.fn().mockImplementation(() => Promise.resolve()),
+      },
+    });
+
+    fireEvent.click(getByTestId('copy'));
+
+    await waitFor(() => expect(window.navigator.clipboard.writeText)
+      .toHaveBeenCalledTimes(1)); //The tiny URL changes everytime so can't use "ToHaveBeenCalled()".
+
   });
 
 
