@@ -15,6 +15,9 @@ This project's goal is to revisit an old project made with Node JS, Express and 
 - [X] They can login or register to save their generated tiny URLs.
 - [X] They can delete or edit the URLs.
 - [X] They can see how many times their tiny URL was clicked.
+- [ ] Styling (=> <i>in progress</i>)
 
 ## Testing
-Since the project is limited in scope, I decided to include some tests with Jest. (=> <i>in progress</i>)
+- [X] Since the project is limited in scope, I decided to include some tests for different parts of the application.
+
+The result of these tests is now 100% coverage.
