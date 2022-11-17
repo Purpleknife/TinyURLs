@@ -79,7 +79,7 @@ module.exports = (db) => {
         const queryParams = [user_id, long_url, short_url, title];
         const queryString = `
     INSERT INTO urls (user_id, date_created, long_url, short_url, title)
-    VALUES ($1, CURRENT_DATE, $2, $3, $4)
+    VALUES ($1, Now(), $2, $3, $4)
     RETURNING *;
     `;
         db.query(queryString, queryParams)
@@ -128,7 +128,7 @@ module.exports = (db) => {
         const queryParams = [url_id];
         const queryString = `
     INSERT INTO visits (url_id, date_visited)
-    VALUES ($1, CURRENT_DATE)
+    VALUES ($1, Now())
     RETURNING *;
     `;
         db.query(queryString, queryParams)

@@ -99,7 +99,7 @@ module.exports = (db: any) => {
     const queryParams: (string | number)[] = [user_id, long_url, short_url, title];
     const queryString: string = `
     INSERT INTO urls (user_id, date_created, long_url, short_url, title)
-    VALUES ($1, CURRENT_DATE, $2, $3, $4)
+    VALUES ($1, Now(), $2, $3, $4)
     RETURNING *;
     `;
 
@@ -165,7 +165,7 @@ module.exports = (db: any) => {
     const queryParams: (string | number)[] = [url_id];
     const queryString: string = `
     INSERT INTO visits (url_id, date_visited)
-    VALUES ($1, CURRENT_DATE)
+    VALUES ($1, Now())
     RETURNING *;
     `;
 
