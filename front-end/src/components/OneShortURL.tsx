@@ -91,7 +91,7 @@ const OneShortURL = (props: OneShortURLProps) => {
             key='bottom'
             placement='bottom'
             overlay={
-              <Tooltip id='tooltip-bottom'>
+              <Tooltip className="position-absolute" id='tooltip-bottom'>
                 {urlCopied ? 'Copied!' : 'Copy to clipboard.'}
               </Tooltip>
             }

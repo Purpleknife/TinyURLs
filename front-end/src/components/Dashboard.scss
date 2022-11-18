@@ -3,7 +3,7 @@
 
 .dashboard {
   background-image: url("../../public/images/inspiration-geometry.png");
-  min-height: 100vh;
+  //display: flex;
 
   .container {
     margin-top: 2em;
@@ -12,5 +12,6 @@
     grid-gap: 5px;
     align-items: stretch;
     padding-bottom: 2em;
+    
   }
 }

@@ -106,7 +106,6 @@ const ShortenURLs = (props: ShortenURLsProps) => {
           </OverlayTrigger>
 
         </span>
-
           <OverlayTrigger
             key='right'
             placement='right'
