@@ -27,7 +27,6 @@
   .one_card {
     border: 1px solid black;
     display: flex;
-    //align-items: center;
     flex-direction: column;
     text-align: left;
     width: 25em;
@@ -74,7 +73,6 @@
     margin-top: 0.5em;
     border: 1px solid black;
     width: 21em;
-    //cursor: pointer;
 
     #tiny_url {
       cursor: pointer;
