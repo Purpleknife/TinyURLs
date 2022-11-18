@@ -23,14 +23,8 @@ const ShortenURLs = (props: ShortenURLsProps) => {
   const [longURL, setLongURL] = useState<string>('');
   const [saveLongURL, setSaveLongURL] = useState<string>('');
   const [urlCopied, setUrlCopied] = useState<boolean>(false);
-  const [save, setSave] = useState<boolean>(false);
   
   const title = useRef<any>(null);
-
-  //Save to database:
-  const showSave = () => {
-    setSave(!save);
-  }
 
   //Copy URL to clipboard:
   const copyURL = () => {
@@ -120,7 +114,7 @@ const ShortenURLs = (props: ShortenURLsProps) => {
       </div>
       }
       <br />
-      <p>You want to save it? <i onClick={showSave} data-testid='save' className="fa-solid fa-chevron-down"></i></p>
+      <p>You want to save it? <i data-testid='save' className="fa-solid fa-chevron-down"></i></p>
 
       <div className='save_div'>
       <input
