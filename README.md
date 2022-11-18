@@ -22,10 +22,14 @@ This project's goal is to revisit an old project made with Node JS, Express and 
 Since the project is limited in scope, I decided to include some tests for different parts of the app.
 
 The result of these tests is 100% coverage.
+
 ![Test results](https://user-images.githubusercontent.com/107894342/202579607-778ca3ee-fe3d-4ec2-9636-7bb437d5c3b6.png)
 
 ## Final Product
 ![App_Overview](https://user-images.githubusercontent.com/107894342/202579593-e62e0f19-02bf-429e-be82-83de4593b208.png)
+
+https://user-images.githubusercontent.com/107894342/202586896-563c16c4-8f4a-4917-95f7-e503bbf4538f.mp4
+
 
 ## Built with
 - Back-end:
