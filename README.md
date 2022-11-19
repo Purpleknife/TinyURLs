@@ -25,6 +25,14 @@ The result of these tests is 100% coverage.
 
 ![Test results](https://user-images.githubusercontent.com/107894342/202579607-778ca3ee-fe3d-4ec2-9636-7bb437d5c3b6.png)
 
+
+## Setup
+1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
+2. Update the `.env` file with your correct local information : username, password, database, port.
+3. Install dependencies: `npm i` in both `front-end` and `back-end` folders.
+4. Reset database: `npm run db:reset`
+5. `cd back-end` then `npm start` to run the Server, and `cd front-end` to run the App in port 3000.
+
 ## Final Product
 https://user-images.githubusercontent.com/107894342/202586896-563c16c4-8f4a-4917-95f7-e503bbf4538f.mp4
 
