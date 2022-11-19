@@ -13,7 +13,7 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const cookie_session_1 = __importDefault(require("cookie-session"));
 const method_override_1 = __importDefault(require("method-override"));
 const app = (0, express_1.default)();
-const PORT = 8080;
+const port = process.env.PORT || 8080;
 // Express Configuration
 app.use((0, morgan_1.default)('dev'));
 app.use(express_1.default.urlencoded({ extended: true }));
@@ -28,6 +28,6 @@ app.use(express_1.default.static('public'));
 // Routes
 const userRoutes = require('./routes/users');
 app.use('/', userRoutes(db));
-app.listen(PORT, () => {
-    console.log(`Express is listening on port ${PORT}!`);
+app.listen(port, () => {
+    console.log(`Express is listening on port ${port}!`);
 });

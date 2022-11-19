@@ -10,7 +10,7 @@ import cookieSession from 'cookie-session';
 import methodOverride from 'method-override';
 
 const app: Express = express();
-const PORT = 8080;
+const port = process.env.PORT || 8080;
 
 // Express Configuration
 app.use(morgan('dev'));
@@ -30,6 +30,6 @@ const userRoutes = require('./routes/users');
 app.use('/', userRoutes(db));
 
 
-app.listen(PORT, () => {
-  console.log(`Express is listening on port ${PORT}!`);
+app.listen(port, () => {
+  console.log(`Express is listening on port ${port}!`);
 });
