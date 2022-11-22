@@ -41,6 +41,9 @@ https://user-images.githubusercontent.com/107894342/202586896-563c16c4-8f4a-4917
 
 
 ## Built with
+- Database
+  - PostgreSQL
+
 - Back-end:
   - express
   - TypeScript
@@ -63,5 +66,6 @@ https://user-images.githubusercontent.com/107894342/202586896-563c16c4-8f4a-4917
   - axios
   - moment
 
-- Database
-  - PostgreSQL
+
+## Other
+The [ERD](https://github.com/Purpleknife/TinyURLs/blob/master/back-end/ERD%20-%20TinyURLs.png) is in the back-end folder.
