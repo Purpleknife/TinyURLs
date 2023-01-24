@@ -10,6 +10,9 @@ This project's goal is to revisit an old project made with Node JS, Express and 
 - Learn how to pass down and handle props with TypeScript.
 - Learn how to manage state with TypeScript.
 
+## ERD
+The [ERD](https://github.com/Purpleknife/TinyURLs/blob/master/back-end/ERD%20-%20TinyURLs.png) is in the back-end folder.
+
 ## Features
 - [X] A user can generate a short URL by submitting a long URL. 
 - [X] They can login or register to save their generated tiny URLs.
@@ -65,7 +68,3 @@ https://user-images.githubusercontent.com/107894342/202586896-563c16c4-8f4a-4917
   - bcryptjs
   - axios
   - moment
-
-
-## Other
-The [ERD](https://github.com/Purpleknife/TinyURLs/blob/master/back-end/ERD%20-%20TinyURLs.png) is in the back-end folder.
